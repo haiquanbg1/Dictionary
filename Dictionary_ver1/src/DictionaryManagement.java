@@ -8,6 +8,7 @@ public class DictionaryManagement {
         Scanner input = new Scanner(System.in); // Biến để nhập
 
         int wordCount = input.nextInt(); // Nhập tổng số từ
+        input.nextLine(); // Lấy khoảng trắng ra
         for(int i=1; i<=wordCount; i++) {
             String word = input.nextLine(); // Nhập từ tiếng Anh
             String means = input.nextLine(); // Nhập từ tiếng Việt
