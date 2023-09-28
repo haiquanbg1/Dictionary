@@ -31,10 +31,10 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    public String dictionaryLookup() {
+    public void dictionaryLookup() {
         Scanner input = new Scanner(System.in); // Biến để nhập
         String word = input.nextLine();
-        return super.findWord(word);
+        System.out.println(super.findWord(word));
     }
 
     public void insert() {
@@ -45,14 +45,26 @@ public class DictionaryManagement extends Dictionary {
     public void update() {
         Word ans = super.insertCommandLine();
         int id = super.findIndex(ans.getWord());
-        super.updateCommandLine(id, ans);
+
+        if(id == -1) {
+            System.out.println("Can't find word");
+        }
+        else {
+            super.updateCommandLine(id, ans);
+        }
     }
 
     public void delete() {
         Scanner input = new Scanner(System.in);
         String ans = input.nextLine();
         int id = super.findIndex(ans);
-        super.deleteCommandLine(id);
+
+        if(id == -1) {
+            System.out.println("Can't find word");
+        }
+        else {
+            super.deleteCommandLine(id);
+        }
     }
 
     public void dictionaryExportToFile() throws IOException {

@@ -1,3 +1,2 @@
-a . b
-c . d
-Quan . dz
+Goodbye . Tam biet
+Hello . Xin chao

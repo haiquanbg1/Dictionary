@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.io.FileWriter;
+import java.util.Random;
 
 /** Lưu trữ mảng Word. */
 public class Dictionary {
@@ -18,7 +19,7 @@ public class Dictionary {
 
     /** Sắp xếp mảng Word. */
     public void sortWords() {
-        Arrays.sort(words, 0, wordCount-1, new Comparator<Word>() {
+        Arrays.sort(words, 0, wordCount, new Comparator<Word>() {
             @Override
             public int compare(Word s1, Word s2) {
                 return s1.getWord().compareTo(s2.getWord());
@@ -52,9 +53,9 @@ public class Dictionary {
 
     public String findWord(String word) {
         String ans = "";
-        for(Word i : words) {
-            if(i.getWord().equals(word)) {
-                ans = i.getMeans();
+        for(int i=0; i<wordCount; i++) {
+            if(words[i].getWord().equals(word)) {
+                ans = words[i].getMeans();
                 break;
             }
         }
@@ -62,12 +63,12 @@ public class Dictionary {
     }
 
     public int findIndex(String word) {
-        int count = 0;
+        int count = -1;
         for(int i=0; i<wordCount; i++) {
             if(words[i].getWord().equals(word)) {
+                count = i;
                 break;
             }
-            count++;
         }
         return count;
     }
@@ -87,10 +88,10 @@ public class Dictionary {
 
     public void deleteCommandLine(int id) {
         words[id] = null;
-        for(int i = id; i < wordCount; i++) {
+        for(int i = id; i < wordCount-1; i++) {
             words[i] = new Word(words[i + 1]);
         }
-        words[wordCount] = null;
+        words[wordCount-1] = null;
         wordCount--;
     }
 
@@ -98,10 +99,10 @@ public class Dictionary {
         Scanner input = new Scanner(System.in); // Biến để nhập
         String s = input.nextLine(); // Nhập từ tiếng Anh
 
-        String demo = s.substring(0, 1);
-        String ans = demo.toUpperCase();
-        s = s.substring(1);
-        s = ans.concat(s);
+//        String demo = s.substring(0, 1);
+//        String ans = demo.toUpperCase();
+//        s = s.substring(1);
+//        s = ans.concat(s);
 
         for(int i=0; i<wordCount; i++) {
             if(words[i].getWord().contains(s)) {
@@ -116,5 +117,26 @@ public class Dictionary {
             fw.write(words[i].getWord() + " . " + words[i].getMeans() + "\n");
         }
         fw.close();
+    }
+
+    public Word[] getWords() {
+        return words;
+    }
+
+    public int getWordCount() {
+        return wordCount;
+    }
+
+    public String pickWordToGame() {
+        Random generator = new Random();
+        int value = generator.nextInt(1000000)%(wordCount+1);
+        if(value == wordCount) {
+            value = 0;
+        }
+        System.out.println(value);
+        System.out.println(wordCount);
+        if(words[value] != null)
+            return words[value].getWord();
+        return "a";
     }
 }

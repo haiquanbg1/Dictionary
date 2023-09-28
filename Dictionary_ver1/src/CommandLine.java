@@ -2,8 +2,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class CommandLine {
-    private DictionaryCommandline basic = new DictionaryCommandline();;
+public class CommandLine{
+    private DictionaryCommandline basic = new DictionaryCommandline();
 
     public void dictionaryBasic() throws FileNotFoundException {
         basic.insertFromFile();
@@ -15,7 +15,7 @@ public class CommandLine {
         basic.showContainWords();
     }
 
-    public void dictionaryAdvanced() throws IOException {
+    public void dictionaryAdvanced() throws IOException, InterruptedException {
         while (true) {
             System.out.print("\nWelcome to My Application!\n" +
                     "[0] Exit\n" +
@@ -59,6 +59,7 @@ public class CommandLine {
                     basic.showContainWords();
                     break;
                 case 7:
+                    basic.runGame();
                     break;
                 case 8:
                     basic.insertFromFile();
@@ -72,7 +73,7 @@ public class CommandLine {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         CommandLine Main = new CommandLine();
 //        Main.dictionarySearcher();
         Main.dictionaryAdvanced();
