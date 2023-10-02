@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/hello-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/dictionary.fxml"));
         stage.setTitle("Dictionary Application");
         stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
