@@ -76,7 +76,7 @@ public class DictionaryManagement {
     }
 
     /**
-     * Tìm keyWord trong dictionary bằng chặt nhị phân
+     * Tìm keyWord trong dictionary bằng chặt nhị phân.
      */
     public int searchWord(Dictionary dictionary, String keyWord) {
         try {
@@ -97,7 +97,7 @@ public class DictionaryManagement {
     }
 
     /**
-     * Cập nhật từ ở vị trí index rồi đẩy vào path
+     * Cập nhật từ ở vị trí index rồi đẩy vào path.
      */
     public void updateWord(Dictionary dictionary, int index, String meaning, String path) {
         try {
@@ -109,13 +109,13 @@ public class DictionaryManagement {
     }
 
     /**
-     * Xoá từ ở vị trí index, đẩy vào path và làm lại cây
+     * Xoá từ ở vị trí index, đẩy vào path và làm lại cây.
      */
     public void deleteWord(Dictionary dictionary, int index, String path) {
         try {
             dictionary.remove(index);
             tree = new Tree();
-            setTrie(dictionary);
+            setTree(dictionary);
             exportToFile(dictionary, path);
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
@@ -123,7 +123,7 @@ public class DictionaryManagement {
     }
 
     /**
-     * Thêm từ mới vào path
+     * Thêm từ mới vào path.
      */
     public void addWord(Word word, String path) {
         try (FileWriter fileWriter = new FileWriter(path, true);
@@ -138,7 +138,7 @@ public class DictionaryManagement {
     }
 
     /**
-     * Tạo ra thời gian delay
+     * Tạo ra thời gian delay.
      */
     public void setTimeout(Runnable runnable, int delay) {
         new Thread(() -> {
@@ -152,9 +152,9 @@ public class DictionaryManagement {
     }
 
     /**
-     * Tạo cây mới từ dictionary
+     * Tạo cây mới từ dictionary.
      */
-    public void setTrie(Dictionary dictionary) {
+    public void setTree(Dictionary dictionary) {
         try {
             for (Word word : dictionary) tree.insert(word.getWordTarget());
         } catch (NullPointerException e) {

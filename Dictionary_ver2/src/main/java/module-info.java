@@ -9,4 +9,6 @@ module dictionary.dictionary_ver2 {
 
     opens dictionary.dictionary_ver2 to javafx.fxml;
     exports dictionary.dictionary_ver2;
+    exports dictionary.dictionary_ver2.Controllers;
+    opens dictionary.dictionary_ver2.Controllers to javafx.fxml;
 }
