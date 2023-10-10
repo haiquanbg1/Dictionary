@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.SearchController">
+<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.SearchController">
    <children>
-      <TextField fx:id="search" layoutX="93.0" layoutY="103.0" onKeyPressed="#search1" prefHeight="35.0" prefWidth="159.0" />
+      <TextField fx:id="search" layoutX="91.0" layoutY="103.0" onKeyTyped="#search" prefHeight="35.0" prefWidth="160.0" />
       <ListView fx:id="listWord" layoutX="93.0" layoutY="155.0" prefHeight="315.0" prefWidth="200.0" />
       <Label alignment="CENTER" layoutX="334.0" layoutY="50.0" prefHeight="35.0" prefWidth="316.0" styleClass="title" text="Định nghĩa">
          <font>
@@ -34,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="257.0" layoutY="103.0" prefHeight="35.0" prefWidth="33.0">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="259.0" layoutY="103.0" prefHeight="35.0" prefWidth="33.0" >
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>

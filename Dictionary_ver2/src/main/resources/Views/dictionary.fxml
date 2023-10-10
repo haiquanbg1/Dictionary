@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="530.0" prefWidth="831.0" styleClass="root" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.DictionaryController">
+<AnchorPane prefHeight="530.0" prefWidth="831.0" styleClass="root" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.DictionaryController">
     <children>
-        <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="469.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="exit-button" stylesheets="@../Styles/style.css" text="Exit">
+        <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="469.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" styleClass="exit-button" stylesheets="@../Styles/style.css" text="Exit">
             <graphic>
-                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="24.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Icons/demo.jpg" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="searchWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="99.0" mnemonicParsing="false" onAction="#searchView" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="     Search">
+        <Button fx:id="searchWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="99.0" mnemonicParsing="false" onAction="#searchView" prefHeight="55.0" prefWidth="55.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="     Search">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
-            <graphic>
-                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../Icons/dictionary.png" />
-                    </image>
-                </ImageView>
-            </graphic>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
             <tooltip>
                 <Tooltip fx:id="tooltip1" text="Tra từ điển" />
             </tooltip>
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Icons/dictionary.png" />
+                    </image>
+                </ImageView>
+            </graphic>
         </Button>
-        <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="180.0" mnemonicParsing="false" onAction="#addView" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="     Add">
+        <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="180.0" mnemonicParsing="false" onAction="#addView" prefHeight="55.0" prefWidth="55.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="     Add">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
@@ -49,14 +46,14 @@
                 <Tooltip fx:id="tooltip2" text="Thêm từ vựng mới" />
             </tooltip>
          <graphic>
-                <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Icons/add_icon.png" />
                     </image>
                 </ImageView>
          </graphic>
         </Button>
-        <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="276.0" mnemonicParsing="false" onAction="#translateView" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="    Translate">
+        <Button fx:id="translateBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="276.0" mnemonicParsing="false" onAction="#translateView" prefHeight="55.0" prefWidth="55.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="    Translate">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
@@ -67,30 +64,30 @@
                 <Tooltip fx:id="tooltip3" text="Phiên dịch" />
             </tooltip>
          <graphic>
-                <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Icons/translate1.png" />
                     </image>
                 </ImageView>
          </graphic>
         </Button>
-        <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="353.0" mnemonicParsing="false" onAction="#gameView" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="    Game">
+        <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="353.0" mnemonicParsing="false" onAction="#gameView" prefHeight="55.0" prefWidth="55.0" styleClass="menu-item" stylesheets="@../Styles/style.css" text="    Game">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
-            <graphic>
-                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../Icons/game_icon.png" />
-                    </image>
-                </ImageView>
-            </graphic>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
             <tooltip>
                 <Tooltip fx:id="tooltip4" text="Trò chơi" />
             </tooltip>
+            <graphic>
+                <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Icons/game_icon.png" />
+                    </image>
+                </ImageView>
+            </graphic>
         </Button>
         <AnchorPane fx:id="container" layoutX="61.0" prefHeight="530.0" prefWidth="771.0" styleClass="container" stylesheets="@../Styles/style.css">
          <children>
@@ -99,6 +96,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-         </children></AnchorPane>
+         </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

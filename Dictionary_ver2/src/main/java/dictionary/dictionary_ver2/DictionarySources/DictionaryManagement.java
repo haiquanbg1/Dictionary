@@ -15,21 +15,27 @@ public class DictionaryManagement {
      */
     public void insertFromFile(Dictionary dictionary, String path) {
         try {
+            String line;
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+
             String englishWord = bufferedReader.readLine();
             englishWord = englishWord.replace(".", "");
-            String line;
+
             while ((line = bufferedReader.readLine()) != null) {
                 Word word = new Word();
                 word.setWordTarget(englishWord.trim());
                 String meaning = line + "\n";
-                while ((line = bufferedReader.readLine()) != null)
-                    if (!line.startsWith(".")) meaning += line + "\n";
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (!line.startsWith(".")) {
+                        meaning += line + "\n";
+                    }
                     else {
                         englishWord = line.replace(".", "");
                         break;
                     }
+                }
                 word.setWordExplain(meaning.trim());
                 dictionary.add(word);
             }
@@ -48,6 +54,7 @@ public class DictionaryManagement {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
             for (Word word : dictionary) {
                 bufferedWriter.write("." + word.getWordTarget() + "\n" + word.getWordExplain());
                 bufferedWriter.newLine();
@@ -67,7 +74,10 @@ public class DictionaryManagement {
             List<String> results = tree.autoComplete(key);
             if (results != null) {
                 int length = Math.min(results.size(), 15); // Chỉ lấy tối đa 15 từ
-                for (int i = 0; i < length; i++) list.add(results.get(i));
+
+                for (int i = 0; i < length; i++) {
+                    list.add(results.get(i));
+                }
             }
         } catch (Exception e) {
             System.out.println("Something went wrong: " + e);
@@ -81,14 +91,22 @@ public class DictionaryManagement {
     public int searchWord(Dictionary dictionary, String keyWord) {
         try {
             dictionary.sort(new SortDictionary());
+
             int left = 0;
             int right = dictionary.size() - 1;
             while (left <= right) {
                 int mid = left + (right - left) / 2;
                 int res = dictionary.get(mid).getWordTarget().compareTo(keyWord);
-                if (res == 0) return mid;
-                if (res <= 0) left = mid + 1;
-                else right = mid - 1;
+
+                if (res == 0) {
+                    return mid;
+                }
+                if (res <= 0) {
+                    left = mid + 1;
+                }
+                else {
+                    right = mid - 1;
+                }
             }
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
@@ -156,7 +174,9 @@ public class DictionaryManagement {
      */
     public void setTree(Dictionary dictionary) {
         try {
-            for (Word word : dictionary) tree.insert(word.getWordTarget());
+            for (Word word : dictionary) {
+                tree.insert(word.getWordTarget());
+            }
         } catch (NullPointerException e) {
             System.out.println("Something went wrong: " + e);
         }

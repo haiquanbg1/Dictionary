@@ -23,7 +23,7 @@ public class DictionaryController implements Initializable {
     private Tooltip tooltip1, tooltip2, tooltip3,tooltip4;
 
     @FXML
-    private Button addWordBtn, translateBtn, searchWordBtn, closeBtn,gameBtn;
+    private Button addWordBtn, translateBtn, searchWordBtn, closeBtn, gameBtn;
 
     @FXML
     private AnchorPane container;
@@ -45,15 +45,13 @@ public class DictionaryController implements Initializable {
         tooltip1.setShowDelay(Duration.seconds(0.3));
         tooltip2.setShowDelay(Duration.seconds(0.3));
         tooltip3.setShowDelay(Duration.seconds(0.3));
+        tooltip4.setShowDelay(Duration.seconds(0.3));
 
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });
     }
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     public void searchView(ActionEvent event) throws IOException {
         showComponent("/Views/search.fxml");
     }
