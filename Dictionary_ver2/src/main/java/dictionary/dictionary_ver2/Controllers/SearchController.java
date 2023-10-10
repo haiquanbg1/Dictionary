@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
+    private  String selectedWord;
     @FXML
     private TextField search;
     @FXML
@@ -56,7 +57,7 @@ public class SearchController implements Initializable {
         listWord.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String selectedWord= listWord.getSelectionModel().getSelectedItem();
+                selectedWord= listWord.getSelectionModel().getSelectedItem();
                 if (selectedWord != null) {
                     indexOfSelectedWord = dictionaryManagement.searchWord(dictionary, selectedWord);
                     if (indexOfSelectedWord == -1) {
@@ -64,7 +65,6 @@ public class SearchController implements Initializable {
                     }
                     definition.setText(dictionary.get(indexOfSelectedWord).getWordExplain());
                 }
-
             }
         });
 
@@ -82,8 +82,11 @@ public class SearchController implements Initializable {
     private void editAction() {
         if(editTable.isVisible()) {
             editTable.setVisible(false);
+            word_edit.clear();
+            define_edit.clear();
         } else {
             editTable.setVisible(true);
+
         }
     }
     @FXML
@@ -126,5 +129,12 @@ public class SearchController implements Initializable {
             list.add(dictionary.get(i).getWordTarget());
         }
         listWord.setItems(list);
+    }
+
+    @FXML
+    private void getSelectedWord() {
+        selectedWord= listWord.getSelectionModel().getSelectedItem();
+        word_edit.setText(selectedWord);
+        define_edit.setText(dictionary.get(indexOfSelectedWord).getWordExplain());
     }
 }
