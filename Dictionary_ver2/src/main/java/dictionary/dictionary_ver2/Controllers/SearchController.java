@@ -10,12 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.net.URL;
@@ -29,7 +27,19 @@ public class SearchController implements Initializable {
 
     @FXML
     private TextArea definition;
+    @FXML
+    private Button edit;
+    @FXML
+    private Button delete;
+    @FXML
+    private AnchorPane editTable;
+    @FXML
+    private Button confirm;
+    @FXML
+    private TextField word_edit;
 
+    @FXML
+    private TextField define_edit;
     private Dictionary dictionary = new Dictionary();
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
     private final String path = "src/main/resources/Texts/dictionaries.txt";
@@ -41,7 +51,7 @@ public class SearchController implements Initializable {
         dictionaryManagement.insertFromFile(dictionary, path);
         dictionaryManagement.setTree(dictionary);
         setListDefault(0);
-
+        editTable.setVisible(false);
         listWord.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         listWord.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -68,6 +78,44 @@ public class SearchController implements Initializable {
         listWord.setItems(list);
     }
 
+    @FXML
+    private void editAction() {
+        if(editTable.isVisible()) {
+            editTable.setVisible(false);
+        } else {
+            editTable.setVisible(true);
+        }
+    }
+    @FXML
+    private void saveAction() {
+        confirm.setOnAction(event -> {
+            Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Bạn chắc chắn muốn sửa?");
+
+            ButtonType buttonTypeYes= new ButtonType("Yes",ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo= new ButtonType("NO",ButtonBar.ButtonData.NO);
+            ButtonType buttonTypeCancel= new ButtonType("CANCEL",ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
+            alert.show();
+        });
+    }
+    @FXML
+    private void deleteAction() {
+        delete.setOnAction(event -> {
+            Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Bạn chắc chắn muốn xóa?");
+
+            ButtonType buttonTypeYes= new ButtonType("Yes",ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo= new ButtonType("NO",ButtonBar.ButtonData.NO);
+            ButtonType buttonTypeCancel= new ButtonType("CANCEL",ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
+            alert.show();
+        });
+    }
     public void sound() {
 
     }
