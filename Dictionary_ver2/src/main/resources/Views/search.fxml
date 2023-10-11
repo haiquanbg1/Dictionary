@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.SearchController">
+<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.SearchController">
    <children>
       <TextField fx:id="search" layoutX="133.0" layoutY="102.0" onKeyTyped="#search" prefHeight="35.0" prefWidth="160.0" />
       <ListView fx:id="listWord" layoutX="93.0" layoutY="155.0" onMouseClicked="#getSelectedWord" prefHeight="315.0" prefWidth="200.0" />
@@ -25,7 +25,7 @@
          </font>
       </Label>
       <TextArea fx:id="definition" layoutX="334.0" layoutY="155.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="316.0" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="614.0" layoutY="101.0" onAction="#sound" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="614.0" layoutY="101.0" onAction="#sound" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../style.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +39,7 @@
             <Image url="@../Icons/search_icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="delete" contentDisplay="GRAPHIC_ONLY" layoutX="475.0" layoutY="101.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css" text="Button">
+      <Button fx:id="delete" contentDisplay="GRAPHIC_ONLY" layoutX="475.0" layoutY="101.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="35.0" prefWidth="35.0" styleClass="searchButton" stylesheets="@../style.css" text="Button">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,16 +48,16 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="edit" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="102.0" mnemonicParsing="false" onAction="#editAction" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css" text="Button">
+      <Button fx:id="edit" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="102.0" mnemonicParsing="false" onAction="#editAction" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../style.css" text="Button">
          <graphic>
-            <ImageView fitHeight="81.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/edit_icon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane fx:id="editTable" layoutX="332.0" layoutY="154.0" prefHeight="315.0" prefWidth="316.0" styleClass="title" stylesheets="@../Styles/style.css">
+      <AnchorPane fx:id="editTable" layoutX="332.0" layoutY="154.0" prefHeight="315.0" prefWidth="316.0" styleClass="title" stylesheets="@../style.css">
          <children>
             <Label layoutX="21.0" layoutY="14.0" text="Tiếng anh" />
             <Label layoutX="21.0" layoutY="84.0" text="Định nghĩa" />

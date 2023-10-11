@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.TranslateController">
+<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.TranslateController">
    <children>
       <Label alignment="CENTER" layoutX="259.0" layoutY="14.0" prefHeight="53.0" prefWidth="214.0" styleClass="title" text="TRANSLATE">
          <font>

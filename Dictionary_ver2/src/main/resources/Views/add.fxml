@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.*?>
 
-<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../Styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.AddController">
+<AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.AddController">
    <children>
       <TextField fx:id="wordTargetInput" layoutX="75.0" layoutY="114.0" prefHeight="25.0" prefWidth="213.0" promptText="Nhập từ tiếng anh" />
       <TextArea fx:id="explanationInput" layoutX="75.0" layoutY="197.0" prefHeight="283.0" prefWidth="350.0" promptText="Nhập nghĩa tiếng Việt" />
       <TextField fx:id="wordDetailInput" layoutX="495.0" layoutY="114.0" prefHeight="25.0" prefWidth="169.0" promptText="Nhập phiên âm" />
-      <Button fx:id="add" layoutX="530.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../Styles/style.css" text="Thêm " >
+      <Button fx:id="add" layoutX="530.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../style.css" text="Thêm " >
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -18,7 +18,7 @@
       <Label layoutX="155.0" layoutY="80.0" styleClass="list" text="Tiếng anh" />
       <Label layoutX="555.0" layoutY="80.0" styleClass="list" text="Phiên âm" />
       <Label layoutX="224.0" layoutY="165.0" styleClass="list" text="Tiếng việt" />
-      <Label fx:id="successAlert" alignment="CENTER" layoutX="443.0" layoutY="249.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../Styles/style.css" text="Thành công">
+      <Label fx:id="successAlert" alignment="CENTER" layoutX="443.0" layoutY="249.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../style.css" text="Thành công">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
