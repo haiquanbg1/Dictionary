@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -37,10 +38,10 @@ public class SearchController implements Initializable {
     @FXML
     private Button confirm;
     @FXML
-    private TextField word_edit;
+    private TextArea word_edit;
 
     @FXML
-    private TextField define_edit;
+    private TextArea define_edit;
     private Dictionary dictionary = new Dictionary();
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
     private final String path = "src/main/resources/Texts/dictionaries.txt";
@@ -101,7 +102,22 @@ public class SearchController implements Initializable {
             ButtonType buttonTypeCancel= new ButtonType("CANCEL",ButtonBar.ButtonData.CANCEL_CLOSE);
 
             alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
-            alert.show();
+            Optional<ButtonType> result=alert.showAndWait();
+            //code for yes button
+            if(result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+                Alert alert1= new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Notifications");
+                alert1.setContentText("Thay đổi thành công");
+                alert1.show();
+            }
+            //code for no button
+            else if(result.get().getButtonData() == ButtonBar.ButtonData.NO ) {
+
+            }
+            else {
+
+            }
+
         });
     }
     @FXML
@@ -116,7 +132,21 @@ public class SearchController implements Initializable {
             ButtonType buttonTypeCancel= new ButtonType("CANCEL",ButtonBar.ButtonData.CANCEL_CLOSE);
 
             alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
-            alert.show();
+            Optional<ButtonType> result=alert.showAndWait();
+            //code for yes button
+            if(result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+                Alert alert1= new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Notifications");
+                alert1.setContentText("Xóa thành công");
+                alert1.show();
+            }
+            //code for no button
+            else if(result.get().getButtonData() == ButtonBar.ButtonData.NO ) {
+
+            }
+            else {
+
+            }
         });
     }
     public void sound() {

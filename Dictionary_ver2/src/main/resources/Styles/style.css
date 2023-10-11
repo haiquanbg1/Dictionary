@@ -261,3 +261,7 @@
 .exit-button:hover{
      -fx-background-color: #b22a00;
 }
+
+.combobox {
+    -fx-font-size: 12px;
+}
