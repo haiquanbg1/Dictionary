@@ -25,9 +25,9 @@
          </font>
       </Label>
       <TextArea fx:id="definition" layoutX="334.0" layoutY="155.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="316.0" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="614.0" layoutY="102.0" onAction="#sound" prefHeight="35.0" prefWidth="33.0">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="614.0" layoutY="101.0" onAction="#sound" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css">
          <graphic>
-            <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/sound.png" />
                </image>
@@ -39,18 +39,18 @@
             <Image url="@../Icons/search_icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="delete" contentDisplay="GRAPHIC_ONLY" layoutX="475.0" layoutY="101.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="35.0" prefWidth="33.0" text="Button">
+      <Button fx:id="delete" contentDisplay="GRAPHIC_ONLY" layoutX="475.0" layoutY="101.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css" text="Button">
          <graphic>
-            <ImageView fitHeight="24.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/delete_icon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="edit" contentDisplay="GRAPHIC_ONLY" layoutX="544.0" layoutY="101.0" mnemonicParsing="false" onAction="#editAction" prefHeight="35.0" prefWidth="33.0" text="Button">
+      <Button fx:id="edit" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="102.0" mnemonicParsing="false" onAction="#editAction" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../Styles/style.css" text="Button">
          <graphic>
-            <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Icons/edit_icon.png" />
                </image>

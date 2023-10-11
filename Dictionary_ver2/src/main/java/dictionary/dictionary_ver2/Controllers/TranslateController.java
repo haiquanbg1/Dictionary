@@ -35,7 +35,12 @@ public class TranslateController implements Initializable {
     }
 
     public void yourLanguageChanged(ActionEvent event) {
+        String previousLanguage = currentLanguage;
         currentLanguage = yourLanguage.getValue();
+        if(currentLanguage == translateLanguage) {
+            targetLanguage.setValue(previousLanguage);
+        }
+
     }
 
     public void targetLanguageChanged(ActionEvent event) {
