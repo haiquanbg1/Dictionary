@@ -83,8 +83,6 @@ public class SearchController implements Initializable {
     private void editAction() {
         if(editTable.isVisible()) {
             editTable.setVisible(false);
-            word_edit.clear();
-            define_edit.clear();
         } else {
             editTable.setVisible(true);
 
