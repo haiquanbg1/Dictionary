@@ -55,10 +55,11 @@ public class SearchController implements Initializable {
         setListDefault(0);
         editTable.setVisible(false);
         listWord.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         listWord.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                selectedWord= listWord.getSelectionModel().getSelectedItem();
+                selectedWord = listWord.getSelectionModel().getSelectedItem();
                 if (selectedWord != null) {
                     indexOfSelectedWord = dictionaryManagement.searchWord(dictionary, selectedWord);
                     if (indexOfSelectedWord == -1) {
@@ -77,6 +78,8 @@ public class SearchController implements Initializable {
         list.clear();
         list = dictionaryManagement.lookupWord(dictionary, target);
         listWord.setItems(list);
+        definition.setText("");
+        // selectedWord = listWord.get;
     }
 
     @FXML
@@ -101,21 +104,29 @@ public class SearchController implements Initializable {
 
             alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
             Optional<ButtonType> result=alert.showAndWait();
+
+            String word = word_edit.getText().trim();
+            String meaning = define_edit.getText().trim();
+
             //code for yes button
             if(result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+                int indexWord = dictionaryManagement.searchWord(dictionary, word);
+                dictionaryManagement.updateWord(dictionary, indexWord, meaning, path);
+                definition.setText(meaning);
+
                 Alert alert1= new Alert(Alert.AlertType.INFORMATION);
                 alert1.setTitle("Notifications");
                 alert1.setContentText("Thay đổi thành công");
                 alert1.show();
             }
             //code for no button
-            else if(result.get().getButtonData() == ButtonBar.ButtonData.NO ) {
-
-            }
             else {
-
+                Alert alert1= new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Notifications");
+                alert1.setContentText("Thay đổi không thành công");
+                alert1.show();
             }
-
+            editTable.setVisible(false);
         });
     }
     @FXML
@@ -131,19 +142,30 @@ public class SearchController implements Initializable {
 
             alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeNo,buttonTypeCancel);
             Optional<ButtonType> result=alert.showAndWait();
+
+            int indexWord = dictionaryManagement.searchWord(dictionary, selectedWord);
+
             //code for yes button
             if(result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+                dictionaryManagement.deleteWord(dictionary, indexWord, path);
+                selectedWord = "";
+                String target = search.getText().trim();
+                list.clear();
+                list = dictionaryManagement.lookupWord(dictionary, target);
+                listWord.setItems(list);
+                definition.setText("");
+
                 Alert alert1= new Alert(Alert.AlertType.INFORMATION);
                 alert1.setTitle("Notifications");
                 alert1.setContentText("Xóa thành công");
                 alert1.show();
             }
             //code for no button
-            else if(result.get().getButtonData() == ButtonBar.ButtonData.NO ) {
-
-            }
             else {
-
+                Alert alert1= new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Notifications");
+                alert1.setContentText("Xóa thất bại");
+                alert1.show();
             }
         });
     }
