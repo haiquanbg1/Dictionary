@@ -182,7 +182,7 @@ public class test extends Application {
         setBlock(gc);
         setTrap(gc);
         eatApple();
-        setGameOver();
+        setGameOver(gc);
         // snake
 
     }
@@ -224,7 +224,7 @@ public class test extends Application {
         return false;
     }
 
-    public void setGameOver() {
+    public void setGameOver(GraphicsContext gc) {
         if (snake.get(0).topLeftX < 0
                 || snake.get(0).topLeftY < 0
                 || snake.get(0).topLeftX >25
@@ -235,6 +235,9 @@ public class test extends Application {
             if (snake.get(0).topLeftX == trap.get(i).topLeftX
                     && snake.get(0).topLeftY == trap.get(i).topLeftY) {
                 gameOver = true;
+                gc.setFill(Color.RED);
+                gc.setFont(new Font("Digital-7", 70));
+                gc.fillText("Game Over", 500 / 3.5, 500 / 2);
                 break;
             }
         }
