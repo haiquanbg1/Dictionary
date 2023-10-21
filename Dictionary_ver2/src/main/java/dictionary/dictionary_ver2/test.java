@@ -133,7 +133,7 @@ public class test extends Application {
                 canMove[RIGHT]= false;
             }
             if (snake.get(0).getTopLeftX()-1 == snake.get(i).getTopLeftX()
-                    && snake.get(0).getTopLeftY()-1 == snake.get(i).topLeftY) {
+                    && snake.get(0).getTopLeftY() == snake.get(i).topLeftY) {
                 canMove[LEFT]= false;
             }
         }
