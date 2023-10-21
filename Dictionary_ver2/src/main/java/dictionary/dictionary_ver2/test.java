@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import dictionary.dictionary_ver2.Game.Apple;
-import dictionary.dictionary_ver2.Game.Shape;
+import dictionary.dictionary_ver2.Game.*;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -23,7 +22,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class test extends Application {
-    private List<Shape> snake = new ArrayList<Shape>();
+    private List<Snake> snake = new ArrayList<Snake>();
     private List<Shape> block = new ArrayList<Shape>();
     private boolean gameOver = false;
     private boolean[] canMove = {true,true,true,true};
@@ -72,9 +71,9 @@ public class test extends Application {
             });
 
             // add start snake parts
-            snake.add(new Shape(width/2, height/2));
-            snake.add(new Shape(width/2, height/2-1));
-            snake.add(new Shape(width/2, height/2-2));
+            snake.add(new Snake(width/2, height/2));
+            snake.add(new Snake(width/2, height/2-1));
+            snake.add(new Snake(width/2, height/2-2));
             //If you do not want to use css style, you can just delete the next line.
             run(gc);
             run(gc);
@@ -172,7 +171,7 @@ public class test extends Application {
     }
     private boolean eatApple() {
         if (apple.topLeftX == snake.get(0).topLeftX && apple.topLeftY == snake.get(0).topLeftY) {
-            snake.add(new Shape(-1, -1));
+            snake.add(new Snake(-1, -1));
             apple.topLeftY=10;
             return true;
         }
