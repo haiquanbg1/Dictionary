@@ -26,6 +26,7 @@ import javafx.util.Duration;
 public class test extends Application {
     private List<Shape> snake = new ArrayList<Shape>();
     private List<Shape> block = new ArrayList<Shape>();
+    private List<Shape> trap = new ArrayList<Shape>();
     private boolean gameOver = false;
     private boolean[] canMove = {true,true,true,true};
     private int width = 20;
@@ -43,10 +44,16 @@ public class test extends Application {
         for (Shape c : block) {
             gc.setFill(Color.BROWN);
             gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
-            /*gc.setFill(Color.BROWN);
-            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );*/
         }
-
+    }
+    private void setTrap(GraphicsContext gc) {
+        trap.add(new Shape(12, 14));
+        trap.add(new Shape(12, 15));
+        trap.add(new Shape(12, 16));
+        for (Shape c : trap) {
+            gc.setFill(Color.RED);
+            gc.fillOval(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
+        }
     }
     public void start(Stage primaryStage) {
         try {
@@ -103,6 +110,9 @@ public class test extends Application {
     // tick
     public void run(GraphicsContext gc) {
         if(gameOver) {
+            gc.setFill(Color.RED);
+            gc.setFont(new Font("Digital-7", 70));
+            gc.fillText("Game Over", 500 / 3.5, 500 / 2);
             return;
         }
         setBackground(gc);
@@ -170,7 +180,9 @@ public class test extends Application {
             }
         }
         setBlock(gc);
+        setTrap(gc);
         eatApple();
+        setGameOver();
         // snake
 
     }
@@ -212,6 +224,21 @@ public class test extends Application {
         return false;
     }
 
+    public void setGameOver() {
+        if (snake.get(0).topLeftX < 0
+                || snake.get(0).topLeftY < 0
+                || snake.get(0).topLeftX >25
+                || snake.get(0).topLeftX >25) {
+            gameOver = true;
+        }
+        for (int i = 0; i < trap.size(); i++) {
+            if (snake.get(0).topLeftX == trap.get(i).topLeftX
+                    && snake.get(0).topLeftY == trap.get(i).topLeftY) {
+                gameOver = true;
+                break;
+            }
+        }
+    }
     public static void main(String[] args) {
         launch(args);
     }
