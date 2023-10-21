@@ -24,8 +24,8 @@ import javafx.util.Duration;
 
 public class test extends Application {
     private List<Snake> snake = new ArrayList<Snake>();
-    private List<Shape> block = new ArrayList<Shape>();
-    private List<Shape> trap = new ArrayList<Shape>();
+    private List<Wall> block = new ArrayList<Wall>();
+    private List<Trap> trap = new ArrayList<Trap>();
     private boolean gameOver = false;
     private boolean[] canMove = {true,true,true,true};
     private int width = 20;
@@ -37,18 +37,18 @@ public class test extends Application {
     private static final int LEFT = 3;
     Apple apple=new Apple(1,1);
     private void setBlock(GraphicsContext gc) {
-        block.add(new Shape(13, 14));
-        block.add(new Shape(13, 15));
-        block.add(new Shape(13, 16));
+        block.add(new Wall(13, 14));
+        block.add(new Wall(13, 15));
+        block.add(new Wall(13, 16));
         for (Shape c : block) {
             gc.setFill(Color.BROWN);
             gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
         }
     }
     private void setTrap(GraphicsContext gc) {
-        trap.add(new Shape(12, 14));
-        trap.add(new Shape(12, 15));
-        trap.add(new Shape(12, 16));
+        trap.add(new Trap(12, 14));
+        trap.add(new Trap(12, 15));
+        trap.add(new Trap(12, 16));
         for (Shape c : trap) {
             gc.setFill(Color.RED);
             gc.fillOval(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
@@ -63,31 +63,32 @@ public class test extends Application {
             Scene scene = new Scene(root, width * 25, height * 25);
             // control
             scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
-                if(e.getCode() == KeyCode.W) {
+                if(e.getCode() == KeyCode.W || e.getCode() == KeyCode.UP) {
                     if(currentDirection != DOWN &&canMove[UP]) {
                         currentDirection = UP;
                         run(gc);
                     }
                 }
-                if(e.getCode() == KeyCode.D) {
+                if(e.getCode() == KeyCode.D || e.getCode() == KeyCode.RIGHT) {
                     if(currentDirection != LEFT&&canMove[RIGHT]) {
                         currentDirection = RIGHT;
                         run(gc);
                     }
                 }
-                if(e.getCode() == KeyCode.S) {
+                if(e.getCode() == KeyCode.S || e.getCode() == KeyCode.DOWN) {
                     if(currentDirection != UP&&canMove[DOWN]) {
                         currentDirection = DOWN;
                         run(gc);
                     }
                 }
-                if(e.getCode() == KeyCode.A) {
+                if(e.getCode() == KeyCode.A || e.getCode() == KeyCode.LEFT) {
                     if(currentDirection != RIGHT&&canMove[LEFT]) {
                         currentDirection = LEFT;
                         run(gc);
                     }
                 }
             });
+            System.out.println(1);
 
             // add start snake parts
             snake.add(new Snake(width/2, height/2));
@@ -141,7 +142,7 @@ public class test extends Application {
             case 4:
                 break;
         }
-        drawSnake(gc);
+//        drawSnake(gc);
         for (int i = 1; i < snake.size(); i++) {
             if (snake.get(0).getTopLeftX() == snake.get(i).getTopLeftX()
                     && snake.get(0).getTopLeftY()-1 == snake.get(i).topLeftY) {
@@ -180,10 +181,11 @@ public class test extends Application {
         }
         setBlock(gc);
         setTrap(gc);
-        eatApple();
+        System.out.println(eatApple());
         setGameOver(gc);
         // snake
 
+        drawSnake(gc);
     }
 
     private void setBackground(GraphicsContext gc) {
@@ -216,7 +218,9 @@ public class test extends Application {
     }
     private boolean eatApple() {
         if (apple.topLeftX == snake.get(0).topLeftX && apple.topLeftY == snake.get(0).topLeftY) {
-            snake.add(new Snake(-1, -1));
+            double posX = snake.get(snake.size() - 1).topLeftX;
+            double posY = snake.get(snake.size() - 1).topLeftY;
+            snake.add(new Snake(posX, posY));
             apple.topLeftY=10;
             return true;
         }

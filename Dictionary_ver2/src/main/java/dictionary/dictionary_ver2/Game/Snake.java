@@ -9,11 +9,7 @@ public class Snake extends Shape{
 
     public Snake(double x, double y) {
         super(x, y);
-    }
-
-    public Snake(Snake snake) {
-        super(snake.topLeftX, snake.topLeftY);
-        setMove(snake.moveU, snake.moveV);
+        setMove(0, 0);
     }
 
     public void setMove(int u, int v) {
