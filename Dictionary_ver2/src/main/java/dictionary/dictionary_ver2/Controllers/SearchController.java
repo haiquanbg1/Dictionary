@@ -55,7 +55,6 @@ public class SearchController implements Initializable {
         setListDefault(0);
         editTable.setVisible(false);
         listWord.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
         listWord.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
