@@ -11,6 +11,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -35,7 +36,18 @@ public class test extends Application {
     private static final int DOWN = 2;
     private static final int LEFT = 3;
     Apple apple=new Apple(1,1);
+    private void setBlock(GraphicsContext gc) {
+        block.add(new Shape(13, 14));
+        block.add(new Shape(13, 15));
+        block.add(new Shape(13, 16));
+        for (Shape c : block) {
+            gc.setFill(Color.BROWN);
+            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
+            /*gc.setFill(Color.BROWN);
+            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );*/
+        }
 
+    }
     public void start(Stage primaryStage) {
         try {
             VBox root = new VBox();
@@ -76,8 +88,10 @@ public class test extends Application {
             snake.add(new Shape(width/2, height/2-1));
             snake.add(new Shape(width/2, height/2-2));
             //If you do not want to use css style, you can just delete the next line.
+
             run(gc);
             run(gc);
+
             primaryStage.setScene(scene);
             primaryStage.setTitle("SNAKE GAME");
             primaryStage.show();
@@ -137,7 +151,25 @@ public class test extends Application {
                 canMove[LEFT]= false;
             }
         }
-
+        for (int i = 1; i < block.size(); i++) {
+            if (snake.get(0).getTopLeftX() == block.get(i).getTopLeftX()
+                    && snake.get(0).getTopLeftY()-1 == block.get(i).topLeftY) {
+                canMove[UP]= false;
+            }
+            if (snake.get(0).getTopLeftX() == block.get(i).getTopLeftX()
+                    && snake.get(0).getTopLeftY()+1 == block.get(i).topLeftY) {
+                canMove[DOWN]= false;
+            }
+            if (snake.get(0).getTopLeftX()+1 == block.get(i).getTopLeftX()
+                    && snake.get(0).getTopLeftY() == block.get(i).topLeftY) {
+                canMove[RIGHT]= false;
+            }
+            if (snake.get(0).getTopLeftX()-1 == block.get(i).getTopLeftX()
+                    && snake.get(0).getTopLeftY() == block.get(i).topLeftY) {
+                canMove[LEFT]= false;
+            }
+        }
+        setBlock(gc);
         eatApple();
         // snake
 
@@ -154,6 +186,7 @@ public class test extends Application {
                 gc.fillRect(i * 25, j * 25, 25, 25);
             }
         }
+
     }
 
     private void setFoodIndex(GraphicsContext gc) {
@@ -165,9 +198,9 @@ public class test extends Application {
     private void drawSnake(GraphicsContext gc) {
         for (Shape c : snake) {
             gc.setFill(Color.LIGHTGREEN);
-            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 - 1, 25 - 1);
+            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
             gc.setFill(Color.GREEN);
-            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 - 2, 25 - 2);
+            gc.fillRect(c.topLeftX * 25, c.topLeftY * 25, 25 , 25 );
         }
     }
     private boolean eatApple() {
