@@ -17,8 +17,8 @@ public class Snake extends Shape{
         moveV = v;
     }
 
-    public void Move(int u, int v) {
-        topLeftX += u * side;
-        topLeftY += v * side;
+    public void Move() {
+        topLeftX += moveU;
+        topLeftY += moveV;
     }
 }
