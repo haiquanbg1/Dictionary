@@ -66,26 +66,6 @@ public class DictionaryManagement {
     }
 
     /**
-     * Tìm các từ chứa key trong dictionary.
-     */
-    public ObservableList<String> lookupWord(Dictionary dictionary, String key ) {
-        ObservableList<String> list = FXCollections.observableArrayList();
-        try {
-            List<String> results = tree.autoComplete(key);
-            if (results != null) {
-                int length = Math.min(results.size(), 15); // Chỉ lấy tối đa 15 từ
-
-                for (int i = 0; i < length; i++) {
-                    list.add(results.get(i));
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Something went wrong: " + e);
-        }
-        return list;
-    }
-
-    /**
      * Tìm keyWord trong dictionary bằng chặt nhị phân.
      */
     public int searchWord(Dictionary dictionary, String keyWord) {
@@ -115,25 +95,31 @@ public class DictionaryManagement {
     }
 
     /**
+     * Tìm các từ chứa key trong dictionary.
+     */
+    public ObservableList<String> lookupWord(Dictionary dictionary, String key ) {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+            List<String> results = tree.autoComplete(key);
+            if (results != null) {
+                int length = Math.min(results.size(), 15); // Chỉ lấy tối đa 15 từ
+
+                for (int i = 0; i < length; i++) {
+                    list.add(results.get(i));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e);
+        }
+        return list;
+    }
+
+    /**
      * Cập nhật từ ở vị trí index rồi đẩy vào path.
      */
     public void updateWord(Dictionary dictionary, int index, String meaning, String path) {
         try {
             dictionary.get(index).setWordExplain(meaning);
-            exportToFile(dictionary, path);
-        } catch (NullPointerException e) {
-            System.out.println("Null Exception.");
-        }
-    }
-
-    /**
-     * Xoá từ ở vị trí index, đẩy vào path và làm lại cây.
-     */
-    public void deleteWord(Dictionary dictionary, int index, String path) {
-        try {
-            dictionary.remove(index);
-            tree = new Tree();
-            setTree(dictionary);
             exportToFile(dictionary, path);
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
@@ -150,6 +136,20 @@ public class DictionaryManagement {
             bufferedWriter.newLine();
         } catch (IOException e) {
             System.out.println("IOException.");
+        } catch (NullPointerException e) {
+            System.out.println("Null Exception.");
+        }
+    }
+
+    /**
+     * Xoá từ ở vị trí index, đẩy vào path và làm lại cây.
+     */
+    public void deleteWord(Dictionary dictionary, int index, String path) {
+        try {
+            dictionary.remove(index);
+            tree = new Tree();
+            setTree(dictionary);
+            exportToFile(dictionary, path);
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
         }

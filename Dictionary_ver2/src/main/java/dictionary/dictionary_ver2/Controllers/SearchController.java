@@ -3,7 +3,9 @@ package dictionary.dictionary_ver2.Controllers;
 import dictionary.dictionary_ver2.Alerts.Alerts;
 import dictionary.dictionary_ver2.DictionarySources.Dictionary;
 import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
-import dictionary.dictionary_ver2.DictionarySources.Word;
+
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -30,8 +32,6 @@ public class SearchController implements Initializable {
     @FXML
     private TextArea definition;
     @FXML
-    private Button edit;
-    @FXML
     private Button delete;
     @FXML
     private AnchorPane editTable;
@@ -46,15 +46,20 @@ public class SearchController implements Initializable {
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
     private final String path = "src/main/resources/Texts/dictionaries.txt";
     private ObservableList<String> list = FXCollections.observableArrayList();
-    private Alerts alerts = new Alerts();
     private int indexOfSelectedWord;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dictionaryManagement.insertFromFile(dictionary, path);
         dictionaryManagement.setTree(dictionary);
-        setListDefault(0);
         editTable.setVisible(false);
         listWord.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        list.clear();
+        for (int i = 0; i < 15; i++) {
+            list.add(dictionary.get(i).getWordTarget());
+        }
+        listWord.setItems(list);
+
         listWord.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -78,7 +83,6 @@ public class SearchController implements Initializable {
         list = dictionaryManagement.lookupWord(dictionary, target);
         listWord.setItems(list);
         definition.setText("");
-        // selectedWord = listWord.get;
     }
 
     @FXML
@@ -168,16 +172,15 @@ public class SearchController implements Initializable {
             }
         });
     }
-    public void sound() {
 
-    }
-
-    private void setListDefault(int index) {
-        list.clear();
-        for (int i = index; i < index + 15; i++) {
-            list.add(dictionary.get(i).getWordTarget());
-        }
-        listWord.setItems(list);
+    @FXML
+    private void sound() {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(dictionary.get(indexOfSelectedWord).getWordTarget());
+        } else throw new IllegalStateException("Cannot find voice: kevin16");
     }
 
     @FXML

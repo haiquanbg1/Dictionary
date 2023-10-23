@@ -19,12 +19,12 @@ public class Word {
         this.wordExplain = wordExplain;
     }
 
-    public String getWordExplain() {
-        return wordExplain;
-    }
-
     public void setWordTarget(String wordTarget) {
         this.wordTarget = wordTarget;
+    }
+
+    public String getWordExplain() {
+        return wordExplain;
     }
 
     public String getWordTarget() {

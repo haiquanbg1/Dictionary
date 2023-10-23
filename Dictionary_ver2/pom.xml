@@ -74,6 +74,16 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>dictionary</groupId>
+            <artifactId>dictionary_ver2</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
