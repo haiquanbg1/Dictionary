@@ -1,11 +1,9 @@
 package dictionary.dictionary_ver2.Controllers;
 
-import dictionary.dictionary_ver2.Alerts.Alerts;
-import dictionary.dictionary_ver2.DictionarySources.Dictionary;
-import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
-
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import dictionary.dictionary_ver2.DictionarySources.Dictionary;
+import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,10 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.net.URL;
 import java.util.Optional;
