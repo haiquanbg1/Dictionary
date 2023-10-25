@@ -50,7 +50,7 @@ public class TranslateController implements Initializable {
         from.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(from.getText().trim().isEmpty()){
+                if(from.getText().trim().isEmpty() || currentLanguage == null || translateLanguage == null){
                     transBtn.setDisable(true);
                 }else {
                     transBtn.setDisable(false);
@@ -65,7 +65,7 @@ public class TranslateController implements Initializable {
     public void yourLanguageChanged(ActionEvent event) {
         String previousLanguage = currentLanguage;
         currentLanguage = yourLanguage.getValue();
-        if(currentLanguage == translateLanguage) {
+        if(currentLanguage.equals(translateLanguage)) {
             targetLanguage.setValue(previousLanguage);
         }
     }
@@ -75,7 +75,7 @@ public class TranslateController implements Initializable {
         currentLanguage=yourLanguage.getValue();
         translateLanguage=targetLanguage.getValue();
         String text = from.getText();
-        to.setText(translate(code.get(languages.indexOf(currentLanguage)).toString(), code.get(languages.indexOf(translateLanguage)).toString(), text));
+        to.setText(translate(code.get(languages.indexOf(currentLanguage)), code.get(languages.indexOf(translateLanguage)), text));
     }
     private static String translate(String langFrom, String langTo, String text) throws IOException {
         // INSERT YOU URL HERE
