@@ -1,14 +1,31 @@
 package dictionary.dictionary_ver2.Game;
 
 public class Shape {
-    static final double side = 25;
-    public double topLeftX;
-    public double topLeftY;
+    private double topLeftX;
+    private double topLeftY;
+    private double width;
+    private double height;
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
 
     public Shape() {
     }
 
-    public Shape(double x, double y) {
+    public Shape(double x, double y, double w, double h) {
         topLeftX = x;
         topLeftY = y;
     }
@@ -30,9 +47,21 @@ public class Shape {
     }
 
     public boolean collider(Shape shape) {
-        if (this.topLeftX == shape.topLeftX || this.topLeftY == shape.topLeftY) {
-            return true;
+        if (this.topLeftX + this.width < shape.getTopLeftY()) {
+            return false;
         }
-        return false;
+
+        if(this.topLeftX > shape.getTopLeftX() + shape.getWidth()) {
+            return false;
+        }
+
+        if(this.topLeftY + this.height < shape.getTopLeftY()) {
+            return false;
+        }
+
+        if(this.topLeftY > shape.getTopLeftY() + shape.getHeight()) {
+            return false;
+        }
+        return true;
     }
 }
