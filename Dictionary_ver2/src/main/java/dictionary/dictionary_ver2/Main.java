@@ -40,6 +40,7 @@ public class Main extends Application {
         });
 
         Scene scene = new Scene(root);
+        scene.getRoot().requestFocus();
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();

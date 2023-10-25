@@ -24,7 +24,10 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="definition" layoutX="334.0" layoutY="155.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="316.0" />
+      <TextArea fx:id="definition" layoutX="334.0" layoutY="155.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="316.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
       <Button contentDisplay="GRAPHIC_ONLY" layoutX="614.0" layoutY="101.0" onAction="#sound" prefHeight="35.0" prefWidth="33.0" styleClass="searchButton" stylesheets="@../style.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -57,11 +60,11 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane fx:id="editTable" layoutX="332.0" layoutY="154.0" prefHeight="315.0" prefWidth="316.0" styleClass="title" stylesheets="@../style.css">
+      <AnchorPane fx:id="editTable" layoutX="335.0" layoutY="155.0" prefHeight="315.0" prefWidth="316.0" styleClass="title" stylesheets="@../style.css">
          <children>
             <Label layoutX="21.0" layoutY="14.0" text="Tiếng anh" />
             <Label layoutX="21.0" layoutY="84.0" text="Định nghĩa" />
-            <TextArea fx:id="word_edit" layoutX="21.0" layoutY="38.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="47.0" prefWidth="285.0" />
+            <TextArea fx:id="word_edit" editable="false" layoutX="21.0" layoutY="38.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="47.0" prefWidth="285.0" />
             <Button fx:id="confirm" layoutX="226.0" layoutY="267.0" mnemonicParsing="false" onAction="#saveAction" text="Xác nhận" />
             <TextArea fx:id="define_edit" layoutX="21.0" layoutY="110.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="285.0" />
          </children>
