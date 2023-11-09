@@ -7,6 +7,7 @@ module dictionary.dictionary_ver2 {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires freetts;
+    requires java.sql;
 
     opens dictionary.dictionary_ver2 to javafx.fxml;
     exports dictionary.dictionary_ver2;

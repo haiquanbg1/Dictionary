@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -52,16 +53,32 @@ public class DictionaryController implements Initializable {
         });
     }
 
-    public void searchView(ActionEvent event) throws IOException {
-        showComponent("/Views/search.fxml");
-    }
-    public void addView(ActionEvent event) throws IOException {
+//    public void searchView(ActionEvent event) throws IOException {
+//        showComponent("/Views/search.fxml");
+//    }
+//    public void addView(MouseEvent event) throws IOException {
+//        showComponent("/Views/add.fxml");
+//    }
+//    public void gameView(ActionEvent event) throws IOException {
+//        showComponent("/Views/game.fxml");
+//    }
+//    public void translateView(ActionEvent event) throws IOException {
+//        showComponent("/Views/translate.fxml");
+//    }
+
+    public void addView(MouseEvent mouseEvent) throws IOException {
         showComponent("/Views/add.fxml");
     }
-    public void gameView(ActionEvent event) throws IOException {
+
+    public void gameView(MouseEvent mouseEvent) throws IOException {
         showComponent("/Views/game.fxml");
     }
-    public void translateView(ActionEvent event) throws IOException {
+
+    public void translateView(MouseEvent mouseEvent) throws IOException {
         showComponent("/Views/translate.fxml");
+    }
+
+    public void searchView(MouseEvent mouseEvent) throws IOException {
+        showComponent("/Views/search.fxml");
     }
 }
