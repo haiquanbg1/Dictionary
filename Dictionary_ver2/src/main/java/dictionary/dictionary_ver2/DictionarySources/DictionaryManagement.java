@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.io.*;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class DictionaryManagement {
     private Tree tree = new Tree();
@@ -107,21 +108,9 @@ public class DictionaryManagement {
     /**
      * Tìm các từ chứa key trong dictionary.
      */
-    public ObservableList<String> lookupWord(Dictionary dictionary, String key ) {
-        ObservableList<String> list = FXCollections.observableArrayList();
-        try {
-            List<String> results = tree.autoComplete(key);
-            if (results != null) {
-                int length = Math.min(results.size(), 15); // Chỉ lấy tối đa 15 từ
-
-                for (int i = 0; i < length; i++) {
-                    list.add(results.get(i));
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Something went wrong: " + e);
-        }
-        return list;
+    public List<String> lookupWord(Dictionary dictionary, String key ) {
+        List<String> results = tree.autoComplete(key);
+        return results;
     }
 
     /**
@@ -190,6 +179,20 @@ public class DictionaryManagement {
             }
         } catch (NullPointerException e) {
             System.out.println("Something went wrong: " + e);
+        }
+    }
+
+    /** Thêm word từ commandline. */
+    public void insertFromCommandline(Dictionary dictionary) {
+        Scanner input = new Scanner(System.in);
+
+        int wordCount = input.nextInt();
+        input.nextLine();
+
+        for (int i = 1; i <= wordCount; i++) {
+            String word = input.nextLine();
+            String means = input.nextLine();
+            dictionary.add(new Word(word, means));
         }
     }
 }
