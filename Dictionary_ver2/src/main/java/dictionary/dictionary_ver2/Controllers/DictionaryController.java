@@ -55,7 +55,11 @@ public class DictionaryController implements Initializable {
         tooltip2.setShowDelay(Duration.seconds(0.3));
         tooltip3.setShowDelay(Duration.seconds(0.3));
         tooltip4.setShowDelay(Duration.seconds(0.3));
-
+        try {
+            showComponent("/Views/search.fxml");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        };
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });

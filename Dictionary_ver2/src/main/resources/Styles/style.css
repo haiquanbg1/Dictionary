@@ -1,6 +1,5 @@
 @font-face {
-    font-family:Pink;
-    src: url("fonts/Pink.ttf");
+    src: url("fonts/Poppins-Regular.ttf"),
 }
 .root{
      -fx-background-color: linear-gradient(to top right, #BEFFF7, #A6F6FF);
@@ -21,7 +20,7 @@
  -fx-background-insets: 0;
  -fx-text-fill: #fff;
  -fx-font-weight: bold;
- -fx-font-family: Pink;
+ -fx-font-family: "Poppins";
 }
 .menu-item:hover,
 .menu-item:focused{
@@ -91,20 +90,20 @@
 .title {
     -fx-background-color: linear-gradient(to top right,#176B87,#419197 );
     -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
-    -fx-font-family: Pink;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
+/*
 .list-cell{
     -fx-text-fill: #04364A;
-    -fx-font-size: 13;
-    -fx-font-weight: normal;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
     -fx-padding: 5;
     -fx-background-color: -fx-box-border, -fx-control-inner-background;
      -fx-background-radius: 5;
      -fx-border-radius: 5;
 }
-/*.list-cell:even, .list-cell:odd{
+.list-cell:even, .list-cell:odd{
     -fx-background-radius: 0;
     -fx-border-radius: 0;
 }
@@ -113,15 +112,13 @@
 }
 .list-cell:odd {
     -fx-background-color: #eff0fb;
-}*/
+}
 .list-cell:filled:hover,
 .list-cell:filled:selected{
-    -fx-background-color: #89CFF3;
-    -fx-font-size: 13px;
-    -fx-font-weight: 700;
-    -fx-text-fill: #232D3F;
+    -fx-background-color: linear-gradient(to bottom left,#419197, #176B87);
+    -fx-text-fill: white;
 }
-/*.list-cell .scroll-bar:horizontal .track,
+.list-cell .scroll-bar:horizontal .track,
 .list-cell .scroll-bar:vertical .track ,
 .explanation-field .scroll-bar:horizontal .track,
 .explanation-field .scroll-bar:vertical .track{
@@ -172,11 +169,11 @@
 }*/
 .add-button{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
-    -fx-text-fill: #F0F0F0;
+    -fx-text-fill: #ecf0f1;
     -fx-background-radius: 5px;
     -fx-font-size: 13px;
-    -fx-font-weight: 600;
-    -fx-background-color: linear-gradient(to bottom left, #89CFF3, #80B3FF);
+    -fx-font-weight: 700;
+    -fx-background-color: linear-gradient(to bottom left, #25b89f, #112bea);
     -fx-pref-width: 100px;
     -fx-pref-height: 30px;
 }
@@ -235,7 +232,7 @@
      -fx-background-insets: 0;
      -fx-text-fill: #fff;
      -fx-font-weight: bold;
-     -fx-font-family: Pink;
+     -fx-font-family: "Poppins";
 }
 .exit-button:hover{
      -fx-background-color: #b22a00;
@@ -254,23 +251,10 @@
     -fx-background-insets: 0;
     -fx-effect: dropshadow(three-pass-box, #718093, 2, 0, 0, 1) ;
 }
-
 .addtitle {
-    -fx-background-color: #89CFF3;
-    /*-fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
-    */
-    -fx-text-fill: black ;
-    -fx-font-size: 13px;
-    -fx-font-weight: 600;
+    -fx-background-color: #9EB8D9;
+    -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
     -fx-font-family: Pink;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
-
-.welcomeButton {
-    -fx-background-color: #45C2C8;
-    -fx-font-size: 14px;
-    -fx-text-fill: white ;
-    -fx-font-weight: 700;
-}
-

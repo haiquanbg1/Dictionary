@@ -20,28 +20,28 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/dictionary.fxml"));
-        stage.setTitle("Dictionary Application");
-        stage.initStyle(StageStyle.TRANSPARENT);
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/welcome.fxml"));
+//        stage.setTitle("Dictionary Application");
+//        stage.initStyle(StageStyle.TRANSPARENT);
+        /*root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
             }
-        });
+        });*/
 
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+        /*root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 stage.setX(event.getScreenX() - xOffset);
                 stage.setY(event.getScreenY() - yOffset);
             }
-        });
+        });*/
 
         Scene scene = new Scene(root);
-        scene.getRoot().requestFocus();
-        scene.setFill(Color.TRANSPARENT);
+//        scene.getRoot().requestFocus();
+        /*scene.setFill(Color.TRANSPARENT);*/
         stage.setScene(scene);
         stage.show();
     }

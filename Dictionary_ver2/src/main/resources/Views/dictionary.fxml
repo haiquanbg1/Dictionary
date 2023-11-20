@@ -90,13 +90,6 @@
             </graphic>
         </Button>
         <AnchorPane fx:id="container" layoutX="61.0" prefHeight="530.0" prefWidth="771.0" styleClass="container" stylesheets="@../style.css">
-         <children>
-            <Label layoutX="54.0" layoutY="117.0" prefHeight="245.0" prefWidth="571.0" text="Chào mừng bạn đến với chương trình học tiếng Anh">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
         </AnchorPane>
     </children>
 </AnchorPane>
