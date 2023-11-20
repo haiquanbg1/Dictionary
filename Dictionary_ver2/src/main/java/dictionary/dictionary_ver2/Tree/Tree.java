@@ -3,9 +3,9 @@ package dictionary.dictionary_ver2.Tree;
 import java.util.*;
 
 public class Tree {
-    protected final Map<Character, Tree> letter; // Lưu kí tự của nó và cây tiếp theo
-    protected String word;// Lưu từ được hình thành khi xét đến nó
-    protected boolean end = false;// Check xem kết thúc từ chưa
+    private final Map<Character, Tree> letter; // Lưu kí tự của nó và cây tiếp theo
+    private String word;// Lưu từ được hình thành khi xét đến nó
+    private boolean end = false;// Check xem kết thúc từ chưa
 
     public Tree() {
         this(null);

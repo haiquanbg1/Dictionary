@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.input.KeyCode;
@@ -23,9 +24,16 @@ public class GameController implements Initializable {
 
     @FXML
     private AnchorPane plane;
-
+    @FXML
+    private AnchorPane background;
     @FXML
     private Rectangle bird;
+    @FXML
+    private Rectangle top;
+    @FXML
+    private Rectangle mid;
+    @FXML
+    private Rectangle bot;
 
     double yDelta = 0.02 ;
     double time = 0;
@@ -57,13 +65,21 @@ public class GameController implements Initializable {
             moveBirdY(yDelta * time * 5);
         } else {
             if (count < jumpHeight) {
-                moveBirdY(yDelta * jumpHeight * -5);
-                count += yDelta * jumpHeight * 5;
+                moveBirdY(yDelta * jumpHeight * -3);
+                count += yDelta * jumpHeight * 3;
             } else {
                 time = 0;
                 isFly = false;
             }
         }
+
+        moveWallX(yDelta * 100);
+
+        if (isOut()) {
+            resetWall();
+        }
+
+        System.out.println(top.getX());
 
         if(isBirdDead()){
             resetBird();
@@ -71,22 +87,62 @@ public class GameController implements Initializable {
     }
 
     //Everything called once, at the game start
-    private void load(){
+    private void load() {
         System.out.println("Game starting");
-
+//        createWall();
     }
 
-    private void moveBirdY(double positionChange){
+    public void moveBirdY(double positionChange) {
         bird.setY(bird.getY() + positionChange);
     }
 
-    private boolean isBirdDead(){
-        double birdY = bird.getLayoutY() + bird.getY();
-        return birdY >= plane.getHeight();
+    public void moveWallX(double positionChange) {
+        top.setX(top.getX() - positionChange);
+        mid.setX(mid.getX() - positionChange);
+        bot.setX(bot.getX() - positionChange);
     }
 
-    private void resetBird(){
-        bird.setY(0);
+    private boolean isBirdDead() {
+        double birdY = bird.getLayoutY() + bird.getY();
+        return birdY >= background.getLayoutY() + background.getHeight();
+    }
+
+    private boolean isOut() {
+        if (top.getX() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private void resetBird() {
+        bird.setY(63);
         time = 0;
     }
+
+    private void resetWall() {
+        top.setX(672);
+        mid.setX(672);
+        bot.setX(672);
+    }
+
+    private boolean checkCollision(Rectangle shape1, Rectangle shape2) {
+        if (shape1.getX() > shape2.getX() + shape2.getWidth()) {
+            return false;
+        }
+
+        if (shape1.getX() + shape1.getWidth() < shape2.getX()) {
+            return false;
+        }
+
+        if (shape1.getY() > shape2.getY() + shape2.getHeight()) {
+            return false;
+        }
+
+        if (shape1.getY() + shape1.getHeight() < shape2.getY()) {
+            return false;
+        }
+
+        return true;
+    }
 }
+

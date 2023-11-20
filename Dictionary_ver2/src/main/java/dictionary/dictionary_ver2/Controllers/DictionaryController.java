@@ -1,5 +1,7 @@
 package dictionary.dictionary_ver2.Controllers;
 
+import dictionary.dictionary_ver2.DictionarySources.Dictionary;
+import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +31,10 @@ public class DictionaryController implements Initializable {
     @FXML
     private AnchorPane container;
 
+    public static Dictionary dictionary = new Dictionary();
+    public static DictionaryManagement dictionaryManagement = new DictionaryManagement();
+    public static final String path = "src/main/resources/Texts/dictionaries.txt";
+
     @FXML
     private void setNode(Node node) {
         container.getChildren().clear();
@@ -42,6 +48,8 @@ public class DictionaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dictionaryManagement.insertFromFile(dictionary, path);
+        dictionaryManagement.setTree(dictionary);
 
         tooltip1.setShowDelay(Duration.seconds(0.3));
         tooltip2.setShowDelay(Duration.seconds(0.3));
@@ -51,34 +59,37 @@ public class DictionaryController implements Initializable {
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });
-    }
 
-//    public void searchView(ActionEvent event) throws IOException {
-//        showComponent("/Views/search.fxml");
-//    }
-//    public void addView(MouseEvent event) throws IOException {
-//        showComponent("/Views/add.fxml");
-//    }
-//    public void gameView(ActionEvent event) throws IOException {
-//        showComponent("/Views/game.fxml");
-//    }
-//    public void translateView(ActionEvent event) throws IOException {
-//        showComponent("/Views/translate.fxml");
-//    }
+        addWordBtn.setOnMouseClicked(e -> {
+            try {
+                showComponent("/Views/add.fxml");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
-    public void addView(MouseEvent mouseEvent) throws IOException {
-        showComponent("/Views/add.fxml");
-    }
+        translateBtn.setOnMouseClicked(e -> {
+            try {
+                showComponent("/Views/translate.fxml");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
-    public void gameView(MouseEvent mouseEvent) throws IOException {
-        showComponent("/Views/game.fxml");
-    }
+        searchWordBtn.setOnMouseClicked(e -> {
+            try {
+                showComponent("/Views/search.fxml");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
-    public void translateView(MouseEvent mouseEvent) throws IOException {
-        showComponent("/Views/translate.fxml");
-    }
-
-    public void searchView(MouseEvent mouseEvent) throws IOException {
-        showComponent("/Views/search.fxml");
+        gameBtn.setOnMouseClicked(e -> {
+            try {
+                showComponent("/Views/game.fxml");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 }

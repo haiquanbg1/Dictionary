@@ -5,10 +5,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.util.Comparator;
 import java.util.List;
 
 public class DictionaryManagement {
     private Tree tree = new Tree();
+
+    public void sortDictionary(Dictionary dictionary) {
+        dictionary.sort(new Comparator<Word>() {
+            @Override
+            public int compare(Word o1, Word o2) {
+                return o1.getWordTarget().compareTo(o2.getWordTarget());
+            }
+        });
+    }
 
     /**
      * Đẩy từ trong path vào dictionary.
@@ -70,7 +80,7 @@ public class DictionaryManagement {
      */
     public int searchWord(Dictionary dictionary, String keyWord) {
         try {
-            dictionary.sort(new SortDictionary());
+            sortDictionary(dictionary);
 
             int left = 0;
             int right = dictionary.size() - 1;
@@ -134,6 +144,7 @@ public class DictionaryManagement {
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write("." + word.getWordTarget() + "\n" + word.getWordExplain());
             bufferedWriter.newLine();
+            tree.insert(word.getWordTarget());
         } catch (IOException e) {
             System.out.println("IOException.");
         } catch (NullPointerException e) {

@@ -15,9 +15,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddController implements Initializable {
-    private Dictionary dictionary = new Dictionary();
-    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
-    private final String path = "src/main/resources/Texts/dictionaries.txt";
+    private Dictionary dictionary = DictionaryController.dictionary;
+    private DictionaryManagement dictionaryManagement = DictionaryController.dictionaryManagement;
+    private final String path = DictionaryController.path;
     private Alerts alerts = new Alerts();
 
     @FXML
@@ -37,7 +37,8 @@ public class AddController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dictionaryManagement.insertFromFile(dictionary, path);
+//        dictionaryManagement.insertFromFile(dictionary, path);
+        wordDetailInput.setText("//");
 
         /**
          * Chưa có gì không cho ấn add
@@ -132,6 +133,7 @@ public class AddController implements Initializable {
                 }
             } else { // Từ vừa nhập chưa có trong dic
                 dictionary.add(word);
+                dictionaryManagement.sortDictionary(dictionary);
                 dictionaryManagement.addWord(word, path);
                 showSuccessAlert();
             }
@@ -144,7 +146,7 @@ public class AddController implements Initializable {
     private void resetInput() {
         wordTargetInput.setText("");
         explanationInput.setText("");
-        wordDetailInput.setText("");
+        wordDetailInput.setText("//");
     }
 
     private void showSuccessAlert() {
