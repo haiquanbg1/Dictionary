@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -79,7 +80,14 @@ public class SearchController implements Initializable {
     private void search(KeyEvent event) {
         String target = search.getText().trim();
         list.clear();
-        list = dictionaryManagement.lookupWord(dictionary, target);
+        List<String> listString = dictionaryManagement.lookupWord(dictionary, target);
+        if (listString != null) {
+            int length = Math.min(listString.size(), 15); // Chỉ lấy tối đa 15 từ
+
+            for (int i = 0; i < length; i++) {
+                list.add(listString.get(i));
+            }
+        }
         listWord.setItems(list);
         definition.setText("");
     }
@@ -151,9 +159,17 @@ public class SearchController implements Initializable {
             if(result.get().getButtonData() == ButtonBar.ButtonData.YES) {
                 dictionaryManagement.deleteWord(dictionary, indexWord, path);
                 selectedWord = "";
+
                 String target = search.getText().trim();
                 list.clear();
-                list = dictionaryManagement.lookupWord(dictionary, target);
+                List<String> listString = dictionaryManagement.lookupWord(dictionary, target);
+                if (listString != null) {
+                    int length = Math.min(listString.size(), 15); // Chỉ lấy tối đa 15 từ
+
+                    for (int i = 0; i < length; i++) {
+                        list.add(listString.get(i));
+                    }
+                }
                 listWord.setItems(list);
                 definition.setText("");
 
