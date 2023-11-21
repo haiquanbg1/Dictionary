@@ -18,7 +18,7 @@ public class DatabaseConnection {
         Connection conn = null;
 
             // assign db parameters
-            String url = "jdbc:mysql://localhost:3306/dictionary";
+            String url = "jdbc:mysql://localhost:3306/tu_dien";
         String password = "Phamquan2004@";
                 String user = "root";
 

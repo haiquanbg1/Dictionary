@@ -1,5 +1,6 @@
 package dictionary.dictionary_ver2.Controllers;
 
+import dictionary.dictionary_ver2.Database.DatabaseConnection;
 import dictionary.dictionary_ver2.DictionarySources.Dictionary;
 import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
 import javafx.event.ActionEvent;
@@ -19,6 +20,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
@@ -34,6 +37,15 @@ public class DictionaryController implements Initializable {
     public static Dictionary dictionary = new Dictionary();
     public static DictionaryManagement dictionaryManagement = new DictionaryManagement();
     public static final String path = "src/main/resources/Texts/dictionaries.txt";
+    public static Connection conn;
+
+    static {
+        try {
+            conn = DatabaseConnection.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     private void setNode(Node node) {

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class TestDB {
     private Connection conn = DatabaseConnection.getConnection();
-    private PreparedStatement preparedStatement = conn.prepareStatement("Select * from game");
+    private PreparedStatement preparedStatement = conn.prepareStatement("Select * from bocauhoi");
     ResultSet resultSet = preparedStatement.executeQuery();
 
     public TestDB() throws SQLException {
@@ -12,7 +12,7 @@ public class TestDB {
 
     public void Test() throws SQLException {
         while (resultSet.next()) {
-            System.out.println(resultSet.getString("id")+" "+resultSet.getString("question"));
+            System.out.println(resultSet.getString("id")+" "+resultSet.getString("cauHoi"));
         }
     }
 
