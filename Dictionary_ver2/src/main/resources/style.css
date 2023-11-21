@@ -273,4 +273,7 @@
     -fx-text-fill: white ;
     -fx-font-weight: 700;
 }
+.welcomeButton:hover {
+    -fx-background-color: #419197;
+}
 
