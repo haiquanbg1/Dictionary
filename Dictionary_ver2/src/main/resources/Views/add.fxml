@@ -12,27 +12,27 @@
 
 <AnchorPane prefHeight="530.0" prefWidth="731.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionary.dictionary_ver2.Controllers.AddController">
    <children>
-      <TextField fx:id="wordTargetInput" layoutX="75.0" layoutY="114.0" prefHeight="25.0" prefWidth="350.0" promptText="Nhập từ tiếng anh" />
-      <TextArea fx:id="explanationInput" layoutX="75.0" layoutY="197.0" prefHeight="283.0" prefWidth="350.0" promptText="Nhập nghĩa tiếng Việt" />
-      <TextField fx:id="wordDetailInput" layoutX="461.0" layoutY="114.0" prefHeight="25.0" prefWidth="203.0" promptText="Nhập phiên âm" />
-      <Button fx:id="add" layoutX="550.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../style.css" text="Thêm ">
+      <TextField fx:id="wordTargetInput" layoutX="75.0" layoutY="154.0" prefHeight="25.0" prefWidth="350.0" promptText="Nhập từ tiếng anh" />
+      <TextArea fx:id="explanationInput" layoutX="75.0" layoutY="224.0" prefHeight="283.0" prefWidth="350.0" promptText="Nhập nghĩa tiếng Việt" />
+      <TextField fx:id="wordDetailInput" layoutX="493.0" layoutY="154.0" prefHeight="25.0" prefWidth="203.0" promptText="Nhập phiên âm" />
+      <Button fx:id="add" layoutX="545.0" layoutY="477.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../style.css" text="Thêm ">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label alignment="CENTER" layoutX="195.0" layoutY="68.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Tiếng anh">
+      <Label alignment="CENTER" layoutX="195.0" layoutY="114.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Tiếng anh">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label alignment="CENTER" layoutX="508.0" layoutY="68.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Phiên âm">
+      <Label alignment="CENTER" layoutX="540.0" layoutY="114.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Phiên âm">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label alignment="CENTER" layoutX="195.0" layoutY="157.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Tiếng việt">
+      <Label alignment="CENTER" layoutX="195.0" layoutY="186.0" prefHeight="32.0" prefWidth="109.0" styleClass="addtitle" text="Tiếng việt">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label fx:id="successAlert" alignment="CENTER" layoutX="458.0" layoutY="410.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../style.css" text="Thành công">
+      <Label fx:id="successAlert" alignment="CENTER" layoutX="458.0" layoutY="438.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../style.css" text="Thành công">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,5 +41,6 @@
             </ImageView>
          </graphic>
       </Label>
+      <TextField alignment="CENTER" editable="false" layoutX="250.0" layoutY="24.0" prefHeight="71.0" prefWidth="332.0" styleClass="title" text="THÊM TỪ VỰNG" />
    </children>
 </AnchorPane>
