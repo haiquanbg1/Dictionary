@@ -1,5 +1,6 @@
 package dictionary.dictionary_ver2.Controllers;
 
+import dictionary.dictionary_ver2.Main;
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -7,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -35,11 +38,11 @@ public class GameController implements Initializable {
     @FXML
     private Rectangle bot;
 
-    double yDelta = 0.02 ;
-    double time = 0;
-    int jumpHeight = 50;
-    boolean isFly = false;
-    int count = 0;
+    private final double yDelta = 0.02 ;
+    private double time;
+    private int jumpHeight;
+    private boolean isFly;
+    private double count;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,37 +62,41 @@ public class GameController implements Initializable {
     }
 
     //Called every game frame
-    private void update() {
+    private void update(){
         if (!isFly) {
             time++;
-            moveBirdY(yDelta * time * 5);
+            moveBirdY(yDelta * time);
         } else {
-            if (count < jumpHeight) {
-                moveBirdY(yDelta * jumpHeight * -3);
-                count += yDelta * jumpHeight * 3;
+            if (count < jumpHeight && bird.getY() + bird.getLayoutY() > 0) {
+                moveBirdY(yDelta * jumpHeight * -2);
+                count += yDelta * jumpHeight * 2;
             } else {
                 time = 0;
                 isFly = false;
             }
         }
 
-        moveWallX(yDelta * 100);
+        moveWallX(yDelta * 30);
 
         if (isOut()) {
             resetWall();
         }
 
-        System.out.println(top.getX());
-
         if(isBirdDead()){
             resetBird();
+            resetWall();
         }
     }
 
     //Everything called once, at the game start
     private void load() {
-        System.out.println("Game starting");
-//        createWall();
+        time = 0;
+        jumpHeight = 40;
+        isFly = false;
+        count = 0;
+
+        Image imageBird = new Image(getClass().getResource("/Images/yellowbird-midflap.png").toString());
+        bird.setFill(new ImagePattern(imageBird));
     }
 
     public void moveBirdY(double positionChange) {
@@ -103,18 +110,30 @@ public class GameController implements Initializable {
     }
 
     private boolean isBirdDead() {
-        double birdY = bird.getLayoutY() + bird.getY();
-        return birdY >= background.getLayoutY() + background.getHeight();
+        double birdY = bird.getY() + bird.getWidth() + bird.getLayoutY();
+        return birdY >= 380
+                || checkCollision(bird, top)
+                || checkCollision(bird, mid)
+                || checkCollision(bird, bot);
     }
 
     private boolean isOut() {
-        if (top.getX() == 0) {
+        if (top.getX() <= 0) {
             return true;
         }
         return false;
     }
 
+    private boolean isEndGame() {
+        return true;
+    }
+
     private void resetBird() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         bird.setY(63);
         time = 0;
     }
@@ -126,19 +145,19 @@ public class GameController implements Initializable {
     }
 
     private boolean checkCollision(Rectangle shape1, Rectangle shape2) {
-        if (shape1.getX() > shape2.getX() + shape2.getWidth()) {
+        if (shape1.getX() + 5 > shape2.getX() + shape2.getWidth()) {
             return false;
         }
 
-        if (shape1.getX() + shape1.getWidth() < shape2.getX()) {
+        if (shape1.getX() + shape1.getWidth() - 5 < shape2.getX()) {
             return false;
         }
 
-        if (shape1.getY() > shape2.getY() + shape2.getHeight()) {
+        if (shape1.getY() + 5 > shape2.getY() + shape2.getHeight()) {
             return false;
         }
 
-        if (shape1.getY() + shape1.getHeight() < shape2.getY()) {
+        if (shape1.getY() + shape1.getHeight() - 5 < shape2.getY()) {
             return false;
         }
 

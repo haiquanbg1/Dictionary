@@ -2,14 +2,14 @@ package dictionary.dictionary_ver2.DictionarySources;
 
 import java.util.Scanner;
 
-public class Game{
+public class GameCommandline{
     private int count;
     private char[] ans;
     private char[] hidden;
     private int wordCount;
     private boolean endGame = false;
 
-    public Game(String data) {
+    public GameCommandline(String data) {
         count = 7;
         ans = data.toCharArray();
         wordCount = ans.length;

@@ -123,7 +123,7 @@ public class DictionaryCommandline {
                     if(value == dictionary.size()) {
                         value = 0;
                     }
-                    Game game = new Game(dictionary.get(value).getWordTarget());
+                    GameCommandline game = new GameCommandline(dictionary.get(value).getWordTarget());
                     while(!game.checkGame()) {
                         char guess = game.insertWord();
                         game.renderFigure(guess);
@@ -146,7 +146,7 @@ public class DictionaryCommandline {
 
     /** Xuất ra mảng Word */
     private void printWord() {
-        int maxLength = 40;
+        int maxLength = 20;
         int count = 8; // Độ dài lớn nhất của số đếm
         System.out.print("No      | English");
 
