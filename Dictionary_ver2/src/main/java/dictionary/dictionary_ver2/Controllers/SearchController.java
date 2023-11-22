@@ -39,9 +39,6 @@ public class SearchController implements Initializable {
 
     @FXML
     private TextArea define_edit;
-//    private Dictionary dictionary = new Dictionary();
-//    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
-//    private final String path = "src/main/resources/Texts/dictionaries.txt";
     private Dictionary dictionary = DictionaryController.dictionary;
     private DictionaryManagement dictionaryManagement = DictionaryController.dictionaryManagement;
     private final String path = DictionaryController.path;

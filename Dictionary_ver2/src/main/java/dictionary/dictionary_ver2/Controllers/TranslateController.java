@@ -7,11 +7,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,11 +39,6 @@ public class TranslateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         yourLanguage.setItems(listLanguages);
         targetLanguage.setItems(listLanguages);
-        /*try {
-            System.out.println(translate("vi", "th", "xin chào"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }*/
         transBtn.setDisable(true);
         from.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override

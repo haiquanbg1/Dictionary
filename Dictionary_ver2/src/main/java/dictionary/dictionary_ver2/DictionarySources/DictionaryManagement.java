@@ -1,8 +1,6 @@
 package dictionary.dictionary_ver2.DictionarySources;
 
 import dictionary.dictionary_ver2.Tree.Tree;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.util.Comparator;

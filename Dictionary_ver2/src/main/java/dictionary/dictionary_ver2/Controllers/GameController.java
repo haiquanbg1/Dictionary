@@ -20,7 +20,7 @@ import java.sql.*;
 import dictionary.dictionary_ver2.Database.*;
 
 public class GameController implements Initializable {
-    AnimationTimer gameLoop;
+    private AnimationTimer gameLoop;
 
     @FXML
     private AnchorPane plane;
