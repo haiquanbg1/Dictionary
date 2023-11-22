@@ -25,9 +25,9 @@
       </Label>
       <AnchorPane fx:id="background" layoutX="40.0" layoutY="134.0" prefHeight="376.0" prefWidth="700.0">
          <children>
-            <Rectangle fx:id="ansC" arcHeight="5.0" arcWidth="5.0" height="50.0" width="30.0" x="674.0" y="270.0" />
-            <Rectangle fx:id="ansB" arcHeight="5.0" arcWidth="5.0" height="50.0" width="30.0" x="674.0" y="150.0" />
-            <Rectangle fx:id="ansA" arcHeight="5.0" arcWidth="5.0" height="50.0" width="30.0" x="674.0" y="30.0" />
+            <Rectangle fx:id="ansC" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="270.0" />
+            <Rectangle fx:id="ansB" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="150.0" />
+            <Rectangle fx:id="ansA" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="30.0" />
             <ImageView fitHeight="377.0" fitWidth="236.0" layoutX="509.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/background-day.png" />
@@ -67,7 +67,7 @@
                   <Image url="@../Images/base.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="600.0" y="350.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="520.0" y="350.0">
                <image>
                   <Image url="@../Images/base.png" />
                </image>
@@ -100,6 +100,10 @@
             </Rectangle>
          </children>
       </AnchorPane>
+      <Label fx:id="alert" layoutX="360.0" layoutY="110.0" prefHeight="25.0" prefWidth="158.0" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
       <TextArea fx:id="question" editable="false" layoutX="92.0" layoutY="23.0" prefHeight="87.0" prefWidth="587.0" wrapText="true">
          <font>
             <Font size="14.0" />

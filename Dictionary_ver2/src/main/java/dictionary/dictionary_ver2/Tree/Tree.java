@@ -19,7 +19,7 @@ public class Tree {
     /**
      * Thêm 1 kí tự.
      */
-    protected void add(char character) {
+    private void add(char character) {
         String s;
         if (this.word == null) s = Character.toString(character);
         else s = this.word + character;
@@ -54,7 +54,7 @@ public class Tree {
     /**
      * Lấy tất cả từ có chứa prefix ra.
      */
-    protected List<String> allPrefixes() {
+    private List<String> allPrefixes() {
         List<String> diagnosisResults = new ArrayList<String>();
         if (this.end) diagnosisResults.add(this.word);
         for (Map.Entry<Character, Tree> entry : letter.entrySet()) { // Lấy key và value ra

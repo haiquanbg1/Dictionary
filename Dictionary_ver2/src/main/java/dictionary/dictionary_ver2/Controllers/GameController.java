@@ -3,6 +3,7 @@ package dictionary.dictionary_ver2.Controllers;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -50,6 +51,8 @@ public class GameController implements Initializable {
     private StackPane b;
     @FXML
     private StackPane c;
+    @FXML
+    private Label alert;
 
     private final double yDelta = 0.02 ;
     private double time;
@@ -59,6 +62,7 @@ public class GameController implements Initializable {
     private List<Data> dataList = new ArrayList<>();
     private String ans;
     private boolean isCollide;
+    private boolean isBirdDie;
 
     public GameController() throws SQLException {
     }
@@ -86,6 +90,14 @@ public class GameController implements Initializable {
 
     //Called every game frame
     private void update(){
+        if (isBirdDie) {
+            isBirdDie = false;
+            resetBird();
+            resetWall();
+            takeQuestion();
+            alert.setText("");
+        }
+
         if (!isFly) {
             time++;
             moveBirdY(yDelta * time);
@@ -108,9 +120,16 @@ public class GameController implements Initializable {
         takeAnswer();
 
         if(isBirdDead()){
-            resetBird();
-            resetWall();
-            takeQuestion();
+            alert.setText("Bird Dead");
+            isBirdDie = true;
+        } else {
+            if (isCollide) {
+                alert.setText("Correct!");
+            } else {
+                if (!isBirdDie) {
+                    alert.setText("");
+                }
+            }
         }
     }
 
@@ -121,6 +140,7 @@ public class GameController implements Initializable {
         isFly = false;
         count = 0;
         isCollide = false;
+        isBirdDie = false;
 
         Image imageBird = new Image(getClass().getResource("/Images/yellowbird-midflap.png").toString());
         bird.setFill(new ImagePattern(imageBird));
@@ -218,29 +238,29 @@ public class GameController implements Initializable {
 
     private void takeAnswer() {
         if (!isCollide && checkCollision(bird, ansA)) {
-            if (!ans.equals("a")) {
-                resetBird();
-                resetWall();
-            } else {
+            if (ans.equals("a")) {
                 isCollide = true;
+                takeQuestion();
+            } else {
+                alert.setText("Incorrect! Bird Dead");
+                isBirdDie = true;
             }
-            takeQuestion();
         } else if (!isCollide && checkCollision(bird, ansB)) {
-            if (!ans.equals("b")) {
-                resetBird();
-                resetWall();
-            } else {
+            if (ans.equals("b")) {
                 isCollide = true;
+                takeQuestion();
+            } else {
+                alert.setText("Incorrect! Bird Dead");
+                isBirdDie = true;
             }
-            takeQuestion();
         } else if (!isCollide && checkCollision(bird, ansC)) {
-            if (!ans.equals("c")) {
-                resetBird();
-                resetWall();
-            } else {
+            if (ans.equals("c")) {
                 isCollide = true;
+                takeQuestion();
+            } else {
+                alert.setText("Incorrect! Bird Dead");
+                isBirdDie = true;
             }
-            takeQuestion();
         } else if (!checkCollision(bird, ansC) && !checkCollision(bird, ansB) && !checkCollision(bird, ansA)) {
             isCollide = false;
         }
