@@ -1,6 +1,6 @@
 package dictionary.dictionary_ver2.Controllers;
 
-import dictionary.dictionary_ver2.Alerts.Alerts;
+
 import dictionary.dictionary_ver2.DictionarySources.Dictionary;
 import dictionary.dictionary_ver2.DictionarySources.DictionaryManagement;
 import dictionary.dictionary_ver2.DictionarySources.Word;
@@ -18,7 +18,7 @@ public class AddController implements Initializable {
     private Dictionary dictionary = DictionaryController.dictionary;
     private DictionaryManagement dictionaryManagement = DictionaryController.dictionaryManagement;
     private final String path = DictionaryController.path;
-    private Alerts alerts = new Alerts();
+
 
     @FXML
     private Button add;
@@ -97,39 +97,55 @@ public class AddController implements Initializable {
      */
     @FXML
     private void handleClickAddBtn() {
-        Alert alertConfirmation = alerts.alertConfirmation("Add word", "Bạn chắc chắn muốn thêm từ này?");
-        Optional<ButtonType> option = alertConfirmation.showAndWait();
+//        Alert alertConfirmation = alerts.alertConfirmation("Add word", "Bạn chắc chắn muốn thêm từ này?");
+//        Optional<ButtonType> option = alertConfirmation.showAndWait();
+
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Add word");
+        alert.setHeaderText("Bạn chắc chắn muốn thêm?");
+
+        ButtonType buttonTypeYes= new ButtonType("Yes",ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeCancel= new ButtonType("CANCEL",ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeYes,buttonTypeCancel);
+        Optional<ButtonType> result=alert.showAndWait();
 
         String englishWord = wordTargetInput.getText().trim().toLowerCase();
         String transcription = wordDetailInput.getText().trim().toLowerCase();
         String meaning = explanationInput.getText().trim().toLowerCase();
 
-        if (option.get() == ButtonType.OK) {
+        if (result.get().getButtonData() == ButtonBar.ButtonData.YES) {
             int wordIndex = dictionaryManagement.searchWord(dictionary, englishWord);
             Word word = new Word(englishWord, transcription + "\n" + meaning);
 
             /** Nếu đã có từ vừa thêm */
             if (wordIndex != -1) {
-                Alert selectionAlert = alerts.alertConfirmation("This word already exists", "Từ này đã tồn tại.\nThay thế hoặc bổ sung nghĩa vừa nhập cho nghĩa cũ.");
-                selectionAlert.getButtonTypes().clear();
                 ButtonType replaceBtn = new ButtonType("Thay thế");
                 ButtonType insertBtn = new ButtonType("Bổ sung");
-                selectionAlert.getButtonTypes().addAll(replaceBtn, insertBtn, ButtonType.CANCEL);
-                Optional<ButtonType> selection = selectionAlert.showAndWait();
 
-                if (selection.get() == replaceBtn) { // Nếu ấn thay thế
+                Alert alert1= new Alert(Alert.AlertType.CONFIRMATION);
+                alert1.setTitle("This word already exists");
+                alert1.setHeaderText("Từ này đã tồn tại.\nThay thế hoặc bổ sung nghĩa vừa nhập cho nghĩa cũ.");
+
+                alert1.getButtonTypes().setAll(replaceBtn,insertBtn,buttonTypeCancel);
+                Optional<ButtonType> result1=alert1.showAndWait();
+
+                if (result1.get() == replaceBtn) { // Nếu ấn thay thế
                     dictionary.get(wordIndex).setWordExplain(transcription + "\n" + meaning);
                     dictionaryManagement.exportToFile(dictionary, path);
                     showSuccessAlert();
                 }
-                if (selection.get() == insertBtn) { // Nếu ấn bổ sung
+                if (result1.get() == insertBtn) { // Nếu ấn bổ sung
                     String oldMeaning = dictionary.get(wordIndex).getWordExplain();
                     dictionary.get(wordIndex).setWordExplain(oldMeaning + "\n= " + meaning);
                     dictionaryManagement.exportToFile(dictionary, path);
                     showSuccessAlert();
                 }
-                if (selection.get() == ButtonType.CANCEL) { // Nếu ấn tắt
-                    alerts.showAlertInfo("Information", "Thay đổi không được công nhận.");
+                if (result1.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE) { // Nếu ấn tắt
+                    Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+                    infoAlert.setTitle("Information");
+                    infoAlert.setHeaderText("Thay đổi không được công nhận.");
+                    infoAlert.showAndWait();
                 }
             } else { // Từ vừa nhập chưa có trong dic
                 dictionary.add(word);
@@ -139,8 +155,12 @@ public class AddController implements Initializable {
             }
             add.setDisable(true);
             resetInput();
-        } else if (option.get() == ButtonType.CANCEL)
-            alerts.showAlertInfo("Information", "Thay đổi không được công nhận.");
+        } else if (result.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE) {
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+            infoAlert.setTitle("Information");
+            infoAlert.setHeaderText("Thay đổi không được công nhận.");
+            infoAlert.showAndWait();
+        }
     }
 
     private void resetInput() {
