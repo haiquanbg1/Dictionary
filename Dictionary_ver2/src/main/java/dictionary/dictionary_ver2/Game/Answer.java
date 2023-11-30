@@ -1,17 +1,24 @@
 package dictionary.dictionary_ver2.Game;
 
 public class Answer extends Wall {
-    private final String ansA = "a";
-    private final String ansB = "b";
-    private final String ansC = "c";
+    private String ans;
+
     public Answer() {
     }
 
-    public Answer(int x, int y, int w, int h) {
+    public Answer(double x, double y, double w, double h) {
         super(x, y, w, h);
     }
 
-    public Answer(int x, int y, int w, int h, String image) {
+    public Answer(double x, double y, double w, double h, String image) {
         super(x, y, w, h, image);
+    }
+
+    public String getAns() {
+        return ans;
+    }
+
+    public void setAns(String ans) {
+        this.ans = ans;
     }
 }

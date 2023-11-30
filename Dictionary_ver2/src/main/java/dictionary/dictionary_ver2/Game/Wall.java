@@ -1,8 +1,9 @@
 package dictionary.dictionary_ver2.Game;
 
 public class Wall extends Rec {
-    private final double speed = 1;
+    private final double speed = 30;
     private final double xDelta = 0.02;
+    private final double start = 674;
 
     public void move() {
         this.setTopLeftX(xDelta * (- speed) + this.getTopLeftX());
@@ -16,17 +17,17 @@ public class Wall extends Rec {
     }
 
     public void reset() {
-        this.setTopLeftX(674);
+        this.setTopLeftX(start);
     }
 
     public Wall() {
     }
 
-    public Wall(int x, int y, int w, int h) {
+    public Wall(double x, double y, double w, double h) {
         super(x, y, w, h);
     }
 
-    public Wall(int x, int y, int w, int h, String image) {
+    public Wall(double x, double y, double w, double h, String image) {
         super(x, y, w, h, image);
     }
 }

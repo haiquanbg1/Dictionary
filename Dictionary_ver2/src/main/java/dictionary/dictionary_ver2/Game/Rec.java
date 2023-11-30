@@ -65,20 +65,20 @@ public class Rec {
         this.topLeftY = topLeftY;
     }
     
-    protected boolean checkCollision(Rec a) {
-        if (a.getTopLeftX() + 5 > this.getTopLeftX() + this.getWidth()) {
+    public boolean checkCollision(Rec a) {
+        if (this.getTopLeftX() + 5 > a.getTopLeftX() + a.getWidth()) {
             return false;
         }
 
-        if (a.getTopLeftX() + a.getWidth() - 5 < this.getTopLeftX()) {
+        if (this.getTopLeftX() + this.getWidth() - 5 < a.getTopLeftX()) {
             return false;
         }
 
-        if (a.getTopLeftY() + 5 > this.getTopLeftY() + this.getHeight()) {
+        if (this.getTopLeftY() + 5 > a.getTopLeftY() + a.getHeight()) {
             return false;
         }
 
-        if (a.getTopLeftY() + a.getHeight() - 5 < this.getTopLeftY()) {
+        if (this.getTopLeftY() + this.getHeight() - 5 < a.getTopLeftY()) {
             return false;
         }
 

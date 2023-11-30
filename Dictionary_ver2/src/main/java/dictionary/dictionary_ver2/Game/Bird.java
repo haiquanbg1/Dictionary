@@ -4,13 +4,15 @@ public class Bird extends Rec {
     private final double speed = 70;
     private final double yDelta = 0.02;
     private final double jumpHeight = 25;
+    private final double start = 63;
+    private final double maxHeight = 355;
     private boolean isDead;
     private boolean isFly;
     private double countDistanceJump;
     private int time;
 
     public void fly() {
-        if (!isFly) {
+        if (!isFly()) {
             time++;
             this.setTopLeftY(yDelta * time + this.getTopLeftY());
         } else {
@@ -19,15 +21,22 @@ public class Bird extends Rec {
                 countDistanceJump += yDelta * speed;
             } else {
                 time = 0;
-                isFly = false;
+                setFly(false);
             }
         }
     }
 
     public void reset() {
         this.setDead(false);
-        this.setTopLeftY(63);
+        this.setTopLeftY(start);
         time = 0;
+    }
+
+    public boolean checkOut() {
+        if (this.getTopLeftY() + this.getWidth() >= maxHeight) {
+            return true;
+        }
+        return false;
     }
 
     public Bird() {

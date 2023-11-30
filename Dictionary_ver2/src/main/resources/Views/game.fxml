@@ -25,9 +25,6 @@
       </Label>
       <AnchorPane fx:id="background" layoutX="40.0" layoutY="134.0" prefHeight="376.0" prefWidth="700.0">
          <children>
-            <Rectangle fx:id="ansC" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="270.0" />
-            <Rectangle fx:id="ansB" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="150.0" />
-            <Rectangle fx:id="ansA" arcHeight="5.0" arcWidth="5.0" height="50.0" width="50.0" x="674.0" y="30.0" />
             <ImageView fitHeight="377.0" fitWidth="236.0" layoutX="509.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/background-day.png" />
