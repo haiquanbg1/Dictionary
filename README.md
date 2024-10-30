@@ -1,8 +1,7 @@
 # Dictionary Java -  Project OOP
 
 ## Introduction:
-- Đây là bài tập lớn của môn Lập trình hướng đối tượng (INT2204 2).
-- Dự án có 2 bản CommandLine và đồ họa được viết bằng ngôn ngữ lập trình Java và thư viện JavaFx
+- The project includes two versions: Command Line and Graphical, developed using the Java programming language and the JavaFX library.
 
 ## Inheritance tree
 ![image](https://github.com/haiquanbg1/Dictionary/assets/125527500/de7c863b-7bfa-47a3-a845-13753f394342)
@@ -16,6 +15,6 @@
 <img width="653" alt="image" src="https://github.com/haiquanbg1/Dictionary/assets/125527500/27327216-3eea-45a2-b767-ad2b51394777">
 
 ## Function
-- CRUD : xem thêm sửa xóa từ vựng.
-- Dịch
-- Game để học từ vựng.
+- CRUD: view, add, edit, and delete vocabulary.
+- Translate.
+- A game designed to help learn vocabulary.
